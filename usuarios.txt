@@ -1,0 +1,75 @@
+ MySQL  localhost:8889  ejercicios  SQL > create user 'alumnos'@'localhost' identified by '1234';
+Query OK, 0 rows affected (0.0141 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > grant select on ejercicios.alumnos to 'alumnos'@'localhost';
+ERROR: 1146 (42S02): Table 'ejercicios.alumnos' doesn't exist
+
+ MySQL  localhost:8889  ejercicios  SQL > grant select on ejercicios.alumno to 'alumnos'@'localhost';
+Query OK, 0 rows affected (0.0157 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > grant alter(nombre_alumno, apellido_pat_alumno, apellido_mat_alumno) on ejercicios.alumno to 'alumnos'@'localhost';
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(nombre_alumno, apellido_pat_alumno, apellido_mat_alumno) on ejercicios.alumno t' at line 1
+
+ MySQL  localhost:8889  ejercicios  SQL > grant alter (nombre_alumno, apellido_pat_alumno, apellido_mat_alumno) on ejercicios.alumno to 'alumnos'@'localhost';
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(nombre_alumno, apellido_pat_alumno, apellido_mat_alumno) on ejercicios.alumno t' at line 1
+
+ MySQL  localhost:8889  ejercicios  SQL > grant alter (nombre_alumno, apellido_pat_alumno, apellido_mat_alumno) on ejercicios.alumno to 'alumnos'@'localhost';
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(nombre_alumno, apellido_pat_alumno, apellido_mat_alumno) on ejercicios.alumno t' at line 1
+
+ MySQL  localhost:8889  ejercicios  SQL > grant select(nombre_alumno, apellido_pat_alumno, apellido_mat_alumno) on ejercicios.alumno to 'alumnos'@'localhost';
+Query OK, 0 rows affected (0.0043 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > create user 'escolares'@'localhost' identified by '1234';
+Query OK, 0 rows affected (0.0068 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > grant all on ejericios.alummno to 'escolares'@'localhost'
+                                       -> ;
+Query OK, 0 rows affected (0.0006 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > create user 'division_estudios'@localhost' identified by '1234';
+                                       '> ';
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' identified by '1234';
+'' at line 1
+
+ MySQL  localhost:8889  ejercicios  SQL > create user 'division_estudios'@'localhost' identified by '1234'; ';
+Query OK, 0 rows affected (0.0008 sec)
+
+                                       '> ';
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '';
+'' at line 1
+
+ MySQL  localhost:8889  ejercicios  SQL > create user 'division_estudios'@'localhost' identified by '1234';
+ERROR: 1396 (HY000): Operation CREATE USER failed for 'division_estudios'@'localhost'
+
+ MySQL  localhost:8889  ejercicios  SQL > drop user 'division_estudios'@'localhost';
+Query OK, 0 rows affected (0.0027 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > create user 'division_estudios'@'localhost' identified by '1234';
+Query OK, 0 rows affected (0.0004 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > grant create view on ejercicios.carreras to create user 'division_estudios'@'localhost' identified by '1234';
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'create user 'division_estudios'@'localhost' identified by '1234'' at line 1
+
+ MySQL  localhost:8889  ejercicios  SQL > grant create view on ejercicios.carreras to 'division_estudios'@'localhost';
+ERROR: 1146 (42S02): Table 'ejercicios.carreras' doesn't exist
+
+ MySQL  localhost:8889  ejercicios  SQL > grant create view on ejercicios.carrera to 'division_estudios'@'localhost';
+Query OK, 0 rows affected (0.0022 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > create user 'director'@'localhost' identified by '1234';
+Query OK, 0 rows affected (0.0006 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > grant select on ejercicios.institutos to 'director'@'localhost';
+Query OK, 0 rows affected (0.0005 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > create user 'rec_humanos'@'localhost' identified by '1234';
+ERROR: 1396 (HY000): Operation CREATE USER failed for 'rec_humanos'@'localhost'
+
+ MySQL  localhost:8889  ejercicios  SQL > create user 'recu_humanos'@'localhost' identified by '1234';
+Query OK, 0 rows affected (0.0007 sec)
+
+ MySQL  localhost:8889  ejercicios  SQL > grant select on ejercicios.docetes to 'recu_humanos'@'localhost';
+ERROR: 1146 (42S02): Table 'ejercicios.docetes' doesn't exist
+
+ MySQL  localhost:8889  ejercicios  SQL > grant select on ejercicios.carrera to 'recu_humanos'@'localhost';
+Query OK, 0 rows affected (0.0006 sec)

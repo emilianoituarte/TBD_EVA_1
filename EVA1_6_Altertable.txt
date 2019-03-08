@@ -1,0 +1,115 @@
+ MySQL  localhost:8889  eva_1  SQL > desc empleados;
++-------------------+-------------+------+-----+---------+-------+
+| Field             | Type        | Null | Key | Default | Extra |
++-------------------+-------------+------+-----+---------+-------+
+| id                | int(11)     | YES  |     | NULL    |       |
+| id_depto          | int(11)     | YES  |     | NULL    |       |
+| nombre            | varchar(50) | YES  |     | NULL    |       |
+| apellido          | varchar(50) | YES  |     | NULL    |       |
+| iniciales         | varchar(10) | YES  |     | NULL    |       |
+| fecha_nacimiento  | date        | YES  |     | NULL    |       |
+| rfc               | varchar(30) | YES  |     | NULL    |       |
+| nss               | varchar(20) | YES  |     | NULL    |       |
+| ciudad_nacimiento | text        | YES  |     | NULL    |       |
+| estado            | int(11)     | YES  |     | NULL    |       |
+| pais              | text        | YES  |     | NULL    |       |
+| celular           | varchar(50) | YES  |     | NULL    |       |
+| tel_fijo          | varchar(50) | YES  |     | NULL    |       |
++-------------------+-------------+------+-----+---------+-------+
+13 rows in set (0.0054 sec)
+
+ MySQL  localhost:8889  eva_1  SQL > select * from empleados;
++----+----------+----------+----------+-----------+------------------+------------+------------+-------------------+--------+--------+---------+------------+
+| id | id_depto | nombre   | apellido | iniciales | fecha_nacimiento | rfc        | nss        | ciudad_nacimiento | estado | pais   | celular | tel_fijo   |
++----+----------+----------+----------+-----------+------------------+------------+------------+-------------------+--------+--------+---------+------------+
+|  1 |        1 | Emiliano | Ituarte  | EI        | 1998-07-03       | HASHFHU237 | NJFJDFSA48 | CHIHUAHUA         |      1 | MEJICO | 9382848 | 3838238238 |
++----+----------+----------+----------+-----------+------------------+------------+------------+-------------------+--------+--------+---------+------------+
+1 row in set (0.0028 sec)
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change id id int key auto_increment;
+Query OK, 1 row affected (0.0399 sec)
+
+Records: 1  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change id_depto id_depto unique;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'unique' at line 1
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change id_depto id_depto int unique;
+Query OK, 0 rows affected (0.0340 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change nombre nombre varchar(50) not null;
+Query OK, 0 rows affected (0.0479 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change apellido apellido varchar(50) not null;
+Query OK, 0 rows affected (0.0490 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change fecha_nacimiento fecha_naciemiento date not null;
+Query OK, 0 rows affected (0.0586 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change nss nss varchar(20) unique not null;
+Query OK, 0 rows affected (0.0619 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change estado estado enumn('CUU', 'CDMX', 'BNC', 'BSC', 'SON');
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'enumn('CUU', 'CDMX', 'BNC', 'BSC', 'SON')' at line 1
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change estado estado enumn('CUU', 'CDMX', 'BNC', 'BSC', 'SON')
+                                  -> ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'enumn('CUU', 'CDMX', 'BNC', 'BSC', 'SON')' at line 1
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change estado estado enumn('CUU', 'CDMX', 'BNC', 'BSC', 'SON') ;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'enumn('CUU', 'CDMX', 'BNC', 'BSC', 'SON')' at line 1
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change estado estado enum('CUU', 'CDMX', 'BNC', 'BSC', 'SON') ;
+Query OK, 1 row affected (0.0358 sec)
+
+Records: 1  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change pais pais default 'Mexico';
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'default 'Mexico'' at line 1
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change pais pais text default 'Mexico';
+ERROR: 1101 (42000): BLOB, TEXT, GEOMETRY or JSON column 'pais' can't have a default value
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change pais pais text default ('Mexico');
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '('Mexico')' at line 1
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados change pais pais varchar(50) default 'Mexico';
+Query OK, 1 row affected (0.0342 sec)
+
+Records: 1  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:8889  eva_1  SQL > alter table empleados add salario int default 30000;
+Query OK, 0 rows affected (0.0610 sec)
+
+Records: 0  Duplicates: 0  Warnings: 0
+
+ MySQL  localhost:8889  eva_1  SQL > desc empleados;
++-------------------+--------------------------------------+------+-----+---------+----------------+
+| Field             | Type                                 | Null | Key | Default | Extra          |
++-------------------+--------------------------------------+------+-----+---------+----------------+
+| id                | int(11)                              | NO   | PRI | NULL    | auto_increment |
+| id_depto          | int(11)                              | YES  | UNI | NULL    |                |
+| nombre            | varchar(50)                          | NO   |     | NULL    |                |
+| apellido          | varchar(50)                          | NO   |     | NULL    |                |
+| iniciales         | varchar(10)                          | YES  |     | NULL    |                |
+| fecha_naciemiento | date                                 | NO   |     | NULL    |                |
+| rfc               | varchar(30)                          | YES  |     | NULL    |                |
+| nss               | varchar(20)                          | NO   | UNI | NULL    |                |
+| ciudad_nacimiento | text                                 | YES  |     | NULL    |                |
+| estado            | enum('CUU','CDMX','BNC','BSC','SON') | YES  |     | NULL    |                |
+| pais              | varchar(50)                          | YES  |     | Mexico  |                |
+| celular           | varchar(50)                          | YES  |     | NULL    |                |
+| tel_fijo          | varchar(50)                          | YES  |     | NULL    |                |
+| salario           | int(11)                              | YES  |     | 30000   |                |
++-------------------+--------------------------------------+------+-----+---------+----------------+
+14 rows in set (0.0007 sec)
